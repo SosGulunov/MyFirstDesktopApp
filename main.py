@@ -58,10 +58,6 @@ def add2(Cheliki):
                 mas[i] = Cheliki[j].name
                 Cheliki[j].canWork[i + 1] = 0
                 Cheliki[j].app()
-    for i in range(6):
-        if mas[i] == "":
-            sort(Cheliki, taimingi)
-            return add2(Cheliki)
     return mas
 
 
