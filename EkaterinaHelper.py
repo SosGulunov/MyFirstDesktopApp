@@ -8,7 +8,7 @@ window = tk.Tk()
 window.title("TimeTable 0.1")
 window.geometry('715x440')
 window.resizable(width=False, height=False)
-check = False
+
 frame_result = tk.Frame(window, width = 358, height=440, bg='white', bd = 1, relief = "solid")
 frame_worklist = tk.Frame(window, width = 90, height=440, bg='thistle1')
 frame_worklistEntry = tk.Frame(window, width = 91, height=440, bg='thistle1')
@@ -19,7 +19,7 @@ frame_worklist.grid(row = 0, column=1)
 frame_worklistEntry.grid(row = 0, column=2)
 frame_restlist.grid(row = 0, column=3)
 
-
+check = False
 
 Txt = [tk.Entry(frame_worklistEntry, width=3, relief = "flat") for i in range(len(Eh.Cheliki))]
 Txt2 = [tk.Entry(frame_worklistEntry, width=3, relief = "flat") for i in range(len(Eh.Cheliki))]
@@ -41,8 +41,6 @@ def createTable():
         save_time()
         check = True
     Eh.main()
-    #for i in range(len(Eh.Cheliki)):
-    #    print(Eh.Cheliki[i].name, Eh.Cheliki[i].a, Eh.Cheliki[i].b)
     table = ttk.Treeview(frame_result, show='headings')
     heads = ['Time','Инфа','Матем','Общая']
     table['columns'] = heads
@@ -75,6 +73,7 @@ def goRest():
         Restlbl = tk.Label(frame_restlist,relief = "flat", bg="light cyan", text=Eh.RestCheliki[i].name)
         Restlbl.place(x = 10, y = 50 + i*25)
     ReWork()
+
 def ReWork():
     for widget in frame_worklist.winfo_children():
         widget.destroy()
@@ -83,6 +82,7 @@ def ReWork():
         widget.insert(0,'0')
     lbl = [tk.Label(frame_worklist,relief = "flat", bg="thistle1", text=Eh.Cheliki[i].name)for i in range(len(Eh.Cheliki))]
     CreateWorkList(lbl)
+
 def clear_RestList():
     global check
     check = False
@@ -91,6 +91,7 @@ def clear_RestList():
     Eh.RestCheliki.clear()
     Eh.Cheliki = [Eh.Chelik(Eh.n[i]) for i in range((len(Eh.n)))]
     ReWork()
+
 def CreateWorkList(TmpLbl):
     Lbl = TmpLbl
     for i in range(len(Eh.Cheliki)):
@@ -114,7 +115,9 @@ bAddinRestList = tk.Button(
     fg="black", bd=1, relief='solid',
     command=goRest,
 )
+
 bAddinRestList.place(x = 685, y = 25)
+
 bCreateTimeTable = tk.Button(
     text="Создать расписание",
     width=25,
@@ -125,6 +128,7 @@ bCreateTimeTable = tk.Button(
     relief = "solid",
     command = createTable,
 )
+
 bCreateTimeTable.place(x = 357, y = 416)
 bClearRestList = tk.Button(
     text="Никто больше не отдыхает!",
@@ -136,6 +140,7 @@ bClearRestList = tk.Button(
     relief = "solid",
     command=clear_RestList,
 )
+
 bClearRestList.place(x = 539, y = 416)
 bOpen = tk.Button(
     text="Открыть",
@@ -147,11 +152,13 @@ bOpen = tk.Button(
     relief="solid",
     command=openf,
 )
+
 bOpen.place(x = 0, y = 416)
 bOpenTxt = tk.Button(
     window, width=25, height=0, text="Работают", bg="thistle1", bd=1, relief='solid',
     command = opentxt,
 )
+
 bOpenTxt.place(x=357, y=0)
 CreateWorkList(lblStd)
 window.mainloop()

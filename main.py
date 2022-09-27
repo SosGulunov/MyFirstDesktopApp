@@ -20,17 +20,19 @@ class Chelik:
         self.count = 0
 
 
-# Workers.txt
 taimingi = [[8, 10], [10, 12], [12, 15], [15, 17], [17, 18], [18, 20], [20, 24]]
+
 my_file = open("Workers.txt", encoding="utf8")
+
 n = my_file.read().split('\n')
-# n = ["Вадим","Андрей","Эдик","Карина","София","Ксюша","Алеся","Алина","Виталий","Ирина Роман","Настя","Милана","Настя Ф","Оля","Мария"]
+
 ChelikiStd = [Chelik(n[i]) for i in range((len(n)))]
+
 Cheliki = ChelikiStd
+
 RestCheliki = []
 
 
-# Cheliki = [Chelik("Вадим",10,15),Chelik("Андрей",17,24),Chelik("Карина",18,24),Chelik("Эдик",20,24),Chelik("София",15,18),Chelik("Ксюша",12,17),Chelik("Алеся",12,20),Chelik("Алина",10,15),Chelik("Виталий",8,15),Chelik("Ирина Роман",8,18),Chelik("Настя",8,15),Chelik("Милана",12,18),Chelik("Настя Ф",15,20),Chelik("Оля",8,24),Chelik("Мария",8,24)]
 def NewTable():
     for i in range(len(Cheliki)):
         Cheliki[i].zeroCount()
@@ -80,6 +82,7 @@ def main():
 
     MorningHuman = firstRow(Cheliki, taimingi)
     sort(Cheliki, taimingi)
+    
     df = pd.DataFrame({'Time': t,
                        var1: [MorningHuman] + add2(Cheliki),
                        var2: [MorningHuman] + add2(Cheliki),
